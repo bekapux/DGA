@@ -1,0 +1,11 @@
+﻿global using DGA.Api;
+global using DGA.Api.Utilities;
+global using DGA.Application;
+global using DGA.Application.Features.Movies;
+global using DGA.Application.Features.Movies.Queries;
+global using DGA.Application.Features.Users.Commands;
+global using DGA.Infrastructure;
+global using ErrorOr;
+global using MediatR;
+global using Microsoft.AspNetCore.Mvc;
+global using Swashbuckle.AspNetCore.Annotations;
