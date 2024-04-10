@@ -11,7 +11,7 @@ public static partial class Controllers
             return result.ToResult();
         })
             .AddNotFoundMetadata()
-            .AddGenericMetadata<List<MovieDto>>("Search movies", "Searches movies based on the provided search value");
+            .AddDefaultMetadata<List<MovieDto>>("Search movies", "Searches movies based on the provided search value");
 
         group.MapGet("user-movies/{userId:Guid}",
         async (ISender sender, Guid userId, CancellationToken cancellationToken) =>
@@ -19,7 +19,7 @@ public static partial class Controllers
             var result = await sender.Send(new GetMoviesByUserIdQuery(userId), cancellationToken);
             return result.ToResult();
         })
-            .AddGenericMetadata<List<MovieDto>>("Get user's watchlist", "Returns movies that the user has added to their watchlist, along with whether each movie has been seen.");
+            .AddDefaultMetadata<List<MovieDto>>("Get user's watchlist", "Returns movies that the user has added to their watchlist, along with whether each movie has been seen.");
 
         return group;
     }

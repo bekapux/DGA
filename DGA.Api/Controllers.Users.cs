@@ -10,7 +10,7 @@ public static partial class Controllers
             var result = await sender.Send(command, cancellationToken);
             return result.ToResult();
         })
-            .AddGenericMetadata<OkResult>("Add movie to the watchlist", "Adds movie to the user's watchlist");
+            .AddDefaultMetadata<OkResult>("Add movie to the watchlist", "Adds movie to the user's watchlist");
 
         group.MapPost("mark-movie-as-seen",
         async (ISender sender, MarkMovieAsSeenCommand command, CancellationToken cancellationToken) =>
@@ -18,7 +18,7 @@ public static partial class Controllers
             var result = await sender.Send(command, cancellationToken);
             return result.ToResult();
         })
-            .AddGenericMetadata<OkResult>("Mark movie as seen", "Marks movie in the watchlist as seen");
+            .AddDefaultMetadata<OkResult>("Mark movie as seen", "Marks movie in the watchlist as seen");
 
         return group;
     }
