@@ -12,20 +12,20 @@ public class GenericRepository<T>(DgaDbContext context) : IGenericRepository<T> 
         return entity;
     }
 
-    public async Task<int> DeleteWhere<TResult>(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default)
+    public async Task<int> DeleteWhereAsync<TResult>(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default)
     {
         return await Context.Set<T>()
             .Where(predicate)
             .ExecuteDeleteAsync(cancellationToken);
     }
 
-    public virtual async Task<T?> Get(Guid id, CancellationToken cancellationToken = default)
+    public virtual async Task<T?> GetAsync(Guid id, CancellationToken cancellationToken = default)
     {
         return await Context.Set<T>()
             .FindAsync(id, cancellationToken);
     }
 
-    public async Task<IReadOnlyList<T>> GetAll(CancellationToken cancellationToken = default)
+    public async Task<IReadOnlyList<T>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         return await Context.Set<T>()
             .AsNoTracking()
